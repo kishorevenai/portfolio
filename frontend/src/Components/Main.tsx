@@ -5,14 +5,26 @@ import { useNavigate } from "react-router-dom";
 const Main = () => {
   const navigate = useNavigate();
   const content = [
-    { title: "About Me", link: "about" },
-    { title: "Projects", link: "projects" },
-    { title: "Github", link: "github" },
-    { title: "Contact Me", link: "contact" },
+    { title: "About Me", link: "about", externalLink: null },
+    { title: "Projects", link: "projects", externalLink: null },
+    {
+      title: "Github",
+      link: "github",
+      externalLink: "https://github.com/kishorevenai",
+    },
+    {
+      title: "Contact Me",
+      link: "contact",
+      externalLink: null,
+    },
   ];
 
-  const handleRoute = (link: string) => {
-    navigate(link);
+  const handleRoute = (link: string, externalLink: string) => {
+    if (externalLink === null) {
+      navigate(link);
+    } else {
+      window.open(externalLink);
+    }
   };
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -44,7 +56,7 @@ const Main = () => {
         {content.map((item, index) => (
           <h1
             key={index}
-            onClick={() => handleRoute(item.link)}
+            onClick={() => handleRoute(item.link, item.externalLink)}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
             style={{
