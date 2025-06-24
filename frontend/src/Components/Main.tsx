@@ -1,13 +1,19 @@
 import { Box } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
+  const navigate = useNavigate();
   const content = [
-    { title: "About Me" },
-    { title: "Projects" },
-    { title: "Github" },
-    { title: "Contact Me" },
+    { title: "About Me", link: "about" },
+    { title: "Projects", link: "projects" },
+    { title: "Github", link: "github" },
+    { title: "Contact Me", link: "contact" },
   ];
+
+  const handleRoute = (link: string) => {
+    navigate(link);
+  };
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -38,6 +44,7 @@ const Main = () => {
         {content.map((item, index) => (
           <h1
             key={index}
+            onClick={() => handleRoute(item.link)}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
             style={{

@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App.tsx";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -51,7 +52,11 @@ const theme = createTheme({
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/*" element={<App />}></Route>
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   </StrictMode>
 );
