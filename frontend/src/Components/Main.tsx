@@ -27,7 +27,7 @@ const Main = () => {
     }
   };
 
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <Box
@@ -56,7 +56,7 @@ const Main = () => {
         {content.map((item, index) => (
           <h1
             key={index}
-            onClick={() => handleRoute(item.link, item.externalLink)}
+            onClick={() => handleRoute(item.link, item.externalLink as string)}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
             style={{

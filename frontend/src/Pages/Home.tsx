@@ -8,12 +8,13 @@ const Home = () => {
   const imgRef = useRef(null);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: any) => {
       const { clientX, clientY } = e;
       const moveX = (clientX / window.innerWidth - 0.5) * 30; // adjust strength here
       const moveY = (clientY / window.innerHeight - 0.5) * 30;
 
       if (imgRef.current) {
+        //@ts-ignore
         imgRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`;
       }
     };
