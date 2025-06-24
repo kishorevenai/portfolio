@@ -51,6 +51,7 @@ const About = () => {
   return (
     <div
       style={{
+        background: "orange",
         position: "relative",
         display: "flex",
         justifyContent: "center",
